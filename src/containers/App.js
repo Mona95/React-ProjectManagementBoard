@@ -22,6 +22,7 @@ const AppWrapper = styled.div`
 class App extends Component {
   render() {
     const lanes = [
+      { id: 0, title: "RoadMap" },
       { id: 1, title: "To Do" },
       { id: 2, title: "In Progress" },
       { id: 3, title: "Review" },

@@ -6,8 +6,9 @@ const LaneWrapper = styled.div`
   list-style: none;
   text-align: left;
   padding: 0;
+  margin: 8px;
   background: lightGray;
-  border-radius: 20px;
+  border-radius: 25px;
   min-height: 50vh;
   width: 20vw;
   @media (max-width: 768px) {
@@ -48,7 +49,12 @@ const Lane = ({
     {(loading || error) && <Alert>{loading ? "Loading..." : error}</Alert>}
     <TicketsWrapper>
       {tickets.map((ticket) => (
-        <Ticket key={ticket.id} onDragStart={onDragStart} ticket={ticket} />
+        <Ticket
+          key={ticket.id}
+          laneId={laneId}
+          onDragStart={onDragStart}
+          ticket={ticket}
+        />
       ))}
     </TicketsWrapper>
   </LaneWrapper>

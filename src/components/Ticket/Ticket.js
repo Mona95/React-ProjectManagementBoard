@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const TicketWrapper = styled.div`
-  background: darkGray;
+  background: ${(props) => setTicketColor(props.laneId)};
   padding: 20px;
   border-radius: 20px;
   &:not(:last-child) {
@@ -20,9 +20,21 @@ const Body = styled.p`
   width: 100%;
 `;
 
-const Ticket = ({ marginRight, onDragStart, ticket }) => (
+const setTicketColor = (laneId) => {
+  let colorObject = {
+    "0": "#969ae0",
+    "1": "#5fb0ce",
+    "2": "#f7a642",
+    "3": "#eae696",
+    "4": "#4cbf54",
+  };
+  return colorObject[laneId];
+};
+
+const Ticket = ({ marginRight, onDragStart, ticket, laneId }) => (
   <TicketWrapper
     draggable
+    laneId={laneId}
     onDragStart={(e) => onDragStart && onDragStart(e, ticket.id)}
     marginRight={marginRight}
   >
