@@ -27,6 +27,7 @@ class App extends Component {
       { id: 3, title: "Review" },
       { id: 4, title: "Done" },
     ];
+
     return (
       <>
         <GlobalStyle />
