@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Ticket } from "../Ticket/Ticket.js";
 
 const LaneWrapper = styled.div`
   list-style: none;
@@ -14,6 +15,14 @@ const LaneWrapper = styled.div`
   }
 `;
 
+const TicketsWrapper = styled.div`
+  padding: 5%;
+`;
+
+const Alert = styled.div`
+  text-aling: center;
+`;
+
 const Title = styled.h2`
   width: 100%;
   padding-bottom: 10px;
@@ -21,9 +30,15 @@ const Title = styled.h2`
   border-bottom: 1px solid darkGray;
 `;
 
-const Lane = ({ title }) => (
+const Lane = ({ title, loading, error, tickets }) => (
   <LaneWrapper>
     <Title>{title}</Title>
+    {(loading || error) && <Alert>{loading ? "loading.." : error}</Alert>}
+    <TicketsWrapper>
+      {tickets.map((ticket) => (
+        <Ticket key={ticket.id} ticket={ticket} />
+      ))}
+    </TicketsWrapper>
   </LaneWrapper>
 );
 
