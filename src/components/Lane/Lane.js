@@ -7,7 +7,7 @@ const LaneWrapper = styled.div`
   text-align: left;
   padding: 0;
   margin: 8px;
-  background: lightGray;
+  background: #e9ecf6;
   border-radius: 25px;
   min-height: 50vh;
   width: 20vw;
