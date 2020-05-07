@@ -32,6 +32,7 @@ const Alert = styled.div`
 `;
 
 const Lane = ({
+  data,
   laneId,
   tickets,
   loading,

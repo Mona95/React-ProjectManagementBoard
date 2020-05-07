@@ -1,4 +1,5 @@
 import React from "react";
+import firebase from "./firebase";
 
 export const withDataFetching = (WrappedComponent) => {
   return class extends React.Component {
@@ -9,12 +10,14 @@ export const withDataFetching = (WrappedComponent) => {
     };
     async componentDidMount() {
       try {
-        const data = await fetch(this.props.dataSource);
-        const dataJSON = await data.json();
-
-        if (dataJSON) {
+        let dbData = [],
+          snapshot = await firebase.firestore().collection("boards").get();
+        snapshot.docs.map((doc) => {
+          dbData = [...dbData, doc.data()];
+        });
+        if (dbData) {
           this.setState({
-            data: dataJSON,
+            data: dbData,
             loading: false,
           });
         }

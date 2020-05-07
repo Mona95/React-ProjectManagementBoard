@@ -38,7 +38,7 @@ class Board extends React.Component {
 
     const tickets = this.state.tickets.filter((ticket) => {
       if (ticket.id === parseInt(id)) {
-        ticket.lane = laneId;
+        ticket.laneId = laneId;
       }
       return ticket;
     });
@@ -50,7 +50,6 @@ class Board extends React.Component {
   };
   render() {
     const { lanes, loading, error } = this.props;
-
     return (
       <BoardWrapper>
         {lanes.map((lane) => (
@@ -64,7 +63,7 @@ class Board extends React.Component {
             onDragOver={this.onDragOver}
             onDrop={this.onDrop}
             tickets={this.state.tickets.filter(
-              (ticket) => ticket.lane === lane.id
+              (ticket) => ticket.laneId === lane.id
             )}
           />
         ))}
